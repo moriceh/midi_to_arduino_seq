@@ -42,7 +42,7 @@ void playMIDI(){
   for (int i = 0; i < length; i++) {
     noteOn(0x90, notes[i][0], notes[i][1]);
     delay(round(notes[i][2]*speed));
-    noteOn(0x90, notes[i][0], notes[i][1]);
+    noteOn(0x90, notes[i][0], 0);
   }
 }
 
