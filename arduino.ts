@@ -32,13 +32,21 @@ const int notes[][3] = {
   code += "};\n";
 
   code += `
-  const int length = sizeof notes / sizeof(int[3]);
+const int length = sizeof notes / sizeof(int[3]);
 void noteOn(int cmd, int pitch, int velocity) {
   Serial.write(cmd);
   Serial.write(pitch);
   Serial.write(velocity);
 }
-  
+
+void playMIDI(){
+  for (int i = 0; i < length; i++) {
+    noteOn(0x90, notes[i][0], notes[i][1]);
+    delay(round(notes[i][2]*speed));
+    noteOn(0x90, notes[i][0], notes[i][1]);
+  }
+}
+
 void setup() {
   // put your setup code here, to run once:
   // call the song function with digital pin
