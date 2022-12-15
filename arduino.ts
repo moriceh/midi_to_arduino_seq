@@ -32,6 +32,7 @@ const int notes[][3] = {
   code += "};\n";
 
   code += `
+  const int length = sizeof notes / sizeof(int[3]);
 void noteOn(int cmd, int pitch, int velocity) {
   Serial.write(cmd);
   Serial.write(pitch);
