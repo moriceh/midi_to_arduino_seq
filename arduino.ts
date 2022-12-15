@@ -18,13 +18,14 @@ const saveFile = (filename: string, data: string) => {
 
 const convertMelody = (notes: Note[]) => {
   let code = `
+#define speed 1
 void playMIDI(){
   `;
   notes.forEach((note) => {
     const freq = note.midi;
     code += `
   noteOn(0x90, ${freq}, 0x45);
-  delay(${Math.round(note.duration * 1000)});
+  delay(round(${Math.round(note.duration * 1000)})*speed);
   noteOn(0x90, ${freq}, 0x00);
 `;
   });
