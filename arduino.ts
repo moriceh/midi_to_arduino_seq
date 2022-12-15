@@ -24,7 +24,7 @@ const int notes[][3] = {
   notes.forEach((note) => {
     const freq = note.midi;
     const vel = Math.round(note.velocity * 126);
-    const delay = ${Math.round(note.duration * 1000)};
+    const delay = Math.round(note.duration * 1000);
     code += `
   \{${freq}, ${vel}, ${delay}\},
 `;
