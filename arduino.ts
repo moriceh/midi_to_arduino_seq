@@ -24,7 +24,7 @@ void playMIDI(){
     const freq = note.midi;
     code += `
   noteOn(0x90, ${freq}, 0x45);
-  delay(${Math.round(note.duration * 1000)});
+  delay(${Math.round(note.duration * 10000)});
   noteOn(0x90, ${freq}, 0x00);
 `;
   });
