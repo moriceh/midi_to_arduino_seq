@@ -21,7 +21,7 @@ const convertMelody = (notes: Note[]) => {
 void song(int buzzerPin){
   `;
   notes.forEach((note) => {
-    const freq = note.name;
+    const freq = note.midi;
     code += `
   tone(buzzerPin, ${freq});
   delay(${Math.round(note.duration * 1000)});
