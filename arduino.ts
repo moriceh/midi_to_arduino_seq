@@ -23,9 +23,9 @@ void song(int buzzerPin){
   notes.forEach((note) => {
     const freq = note.midi;
     code += `
-  tone(buzzerPin, ${freq});
+  noteOn(0x90, ${freq}, 0x45);
   delay(${Math.round(note.duration * 1000)});
-  noTone(buzzerPin);
+  noteOn(0x90, ${freq}, 0x00);
 `;
   });
   code += "}\n";
