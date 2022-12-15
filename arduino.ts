@@ -26,8 +26,7 @@ const int notes[][3] = {
     const vel = Math.round(note.velocity * 126);
     const delay = Math.round(note.duration * 1000);
     code += `
-  \{${freq}, ${vel}, ${delay}\},
-`;
+  \{${freq}, ${vel}, ${delay}\},`;
   });
   code += "};\n";
 
