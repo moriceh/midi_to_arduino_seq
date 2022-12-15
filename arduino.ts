@@ -18,7 +18,7 @@ const saveFile = (filename: string, data: string) => {
 
 const convertMelody = (notes: Note[]) => {
   let code = `
-void song(int buzzerPin){
+void playMIDI(){
   `;
   notes.forEach((note) => {
     const freq = note.midi;
@@ -34,11 +34,12 @@ void song(int buzzerPin){
 void setup() {
   // put your setup code here, to run once:
   // call the song function with digital pin
-  song(11);
+  Serial.begin(31250);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+  playMIDI();
 }
 `;
 
