@@ -17,10 +17,8 @@ const saveFile = (filename: string, data: string) => {
 };
 
 const convertMelody = (notes: Note[]) => {
-  let code = `
-#define speed 1
-const int notes[][3] = {
-  `;
+  let code = `#define speed 1
+const int notes[][3] = {`;
   notes.forEach((note) => {
     const freq = note.midi;
     const vel = Math.round(note.velocity * 126);
