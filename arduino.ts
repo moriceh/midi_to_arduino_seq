@@ -31,6 +31,12 @@ void playMIDI(){
   code += "}\n";
 
   code += `
+void noteOn(int cmd, int pitch, int velocity) {
+  Serial.write(cmd);
+  Serial.write(pitch);
+  Serial.write(velocity);
+}
+  
 void setup() {
   // put your setup code here, to run once:
   // call the song function with digital pin
