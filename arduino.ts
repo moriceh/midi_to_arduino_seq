@@ -38,11 +38,25 @@ void noteOn(int cmd, int pitch, int velocity) {
   Serial.write(velocity);
 }
 
+bool state = 0;
+
 void playMIDI(){
   for (int i = 0; i < length; i++) {
     noteOn(0x90, notes[i][0], notes[i][1]);
     delay(round(notes[i][2]*speed));
     noteOn(0x90, notes[i][0], 0);
+    
+    if (digitalRead(2) == 0) {
+      state = !state;
+      while (digitalRead(2) == 0);
+      delay(200);
+    }
+    
+    if (state == 1) {
+      digitalWrite(LED_BUILTIN, LOW);
+    } else {
+      digitalWrite(LED_BUILTIN, HIGH);
+    }
   }
 }
 
@@ -50,6 +64,8 @@ void setup() {
   // put your setup code here, to run once:
   // call the song function with digital pin
   Serial.begin(31250);
+  pinMode(2, INPUT_PULLUP);
+  pinMode(LED_BUILTIN, OUTPUT);
 }
 
 void loop() {
